@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../../shared/models/product.model';
 
 @Component({
@@ -9,4 +9,10 @@ import { IProduct } from '../../shared/models/product.model';
 })
 export class Product {
   @Input({ required: true }) product!: IProduct;
+
+  @Output() addToCart = new EventEmitter();
+
+  addToCartHandler() {
+    console.log('Clicked in add to cart button');
+  }
 }
