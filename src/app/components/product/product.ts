@@ -9,5 +9,4 @@ import { IProduct } from '../../shared/models/product.model';
 })
 export class Product {
   @Input({ required: true }) product!: IProduct;
-  img = 'https://picsum.photos/640/640?r=' + Math.random();
 }
