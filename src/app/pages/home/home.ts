@@ -1,16 +1,20 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService } from './../../shared/services/cart-service';
 import { Product } from '../../components/product/product';
 import { IProduct } from '../../shared/models/product.model';
+import { Header } from '../../components/header/header';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, Product],
+  imports: [CommonModule, Product, Header],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
 export class Home {
   products = signal<IProduct[]>([]);
+
+  private cartService = inject(CartService);
 
   constructor() {
     const initProducts: IProduct[] = [
@@ -58,5 +62,9 @@ export class Home {
       },
     ];
     this.products.set(initProducts);
+  }
+
+  addToCart(product: IProduct) {
+    this.cartService.addToCart(product);
   }
 }

@@ -13,6 +13,9 @@ export class Product {
   @Output() addToCart = new EventEmitter();
 
   addToCartHandler() {
-    console.log('Clicked in add to cart button');
+    this.addToCart.emit(this.product);
+    console.log(
+      'Clicked in add to cart button nad added the' + this.product.title
+    );
   }
 }
