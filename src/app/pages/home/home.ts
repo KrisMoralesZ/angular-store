@@ -21,7 +21,6 @@ export class Home {
     this.productService.getProducts().subscribe({
       next: (products) => {
         this.products.set(products);
-        console.log(products);
       },
       error: () => {
         console.error();
