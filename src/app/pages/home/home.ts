@@ -1,9 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService } from './../../shared/services/cart-service';
-import { ProductService } from '../../shared/services/product-service';
-import { Product } from '../../components/product/product';
-import { IProduct } from '../../shared/models/product.model';
+import { CartService } from '@shared/services/cart-service';
+import { ProductService } from '@shared/services/product-service';
+import { Product } from '@components/product/product';
+import { IProduct } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-home',
