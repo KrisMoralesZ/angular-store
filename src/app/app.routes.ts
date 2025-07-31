@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { Home } from '@pages/home/home';
 import { About } from '@pages/about/about';
 import { Checkout } from '@pages/checkout/checkout';
-import { Categories } from '@pages/categories/categories';
+import { CategoryPage } from '@pages/categories/category-page/category-page';
+import { CategoryProductsPage } from '@pages/categories/category-products-page/category-products-page';
 
 export const routes: Routes = [
   {
@@ -11,7 +12,11 @@ export const routes: Routes = [
   },
   {
     path: 'categories',
-    component: Categories,
+    component: CategoryPage,
+  },
+  {
+    path: 'categories/:slug',
+    component: CategoryProductsPage,
   },
   {
     path: 'about',
