@@ -2,6 +2,6 @@ export interface IProduct {
   id: number;
   title: string;
   price: number;
-  image: string;
+  images: string[];
   created_at: string;
 }

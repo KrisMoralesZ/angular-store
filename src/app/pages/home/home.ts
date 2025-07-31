@@ -1,8 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService } from './../../shared/services/cart-service';
-import { Product } from '../../components/product/product';
-import { IProduct } from '../../shared/models/product.model';
+import { CartService } from '@shared/services/cart-service';
+import { ProductService } from '@shared/services/product-service';
+import { Product } from '@components/product/product';
+import { IProduct } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-home',
@@ -14,53 +15,17 @@ export class Home {
   products = signal<IProduct[]>([]);
 
   private cartService = inject(CartService);
+  private productService = inject(ProductService);
 
-  constructor() {
-    const initProducts: IProduct[] = [
-      {
-        id: Date.now(),
-        title: 'Pro 1',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=23',
-        created_at: new Date().toISOString(),
+  ngOnInit() {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.products.set(products);
       },
-      {
-        id: Date.now(),
-        title: 'Pro 2',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=12',
-        created_at: new Date().toISOString(),
+      error: () => {
+        console.error();
       },
-      {
-        id: Date.now(),
-        title: 'Pro 3',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=1212',
-        created_at: new Date().toISOString(),
-      },
-      {
-        id: Date.now(),
-        title: 'Pro 1',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=23',
-        created_at: new Date().toISOString(),
-      },
-      {
-        id: Date.now(),
-        title: 'Pro 2',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=12',
-        created_at: new Date().toISOString(),
-      },
-      {
-        id: Date.now(),
-        title: 'Pro 3',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=1212',
-        created_at: new Date().toISOString(),
-      },
-    ];
-    this.products.set(initProducts);
+    });
   }
 
   addToCart(product: IProduct) {

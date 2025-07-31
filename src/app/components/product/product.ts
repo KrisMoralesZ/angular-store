@@ -1,9 +1,10 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IProduct } from '../../shared/models/product.model';
+import { IProduct } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-product',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
@@ -14,8 +15,5 @@ export class Product {
 
   addToCartHandler() {
     this.addToCart.emit(this.product);
-    console.log(
-      'Clicked in add to cart button nad added the' + this.product.title
-    );
   }
 }
