@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProduct } from '../../shared/models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './product.css',
 })
 export class Product {
-  img = 'https://picsum.photos/640/640?r=' + Math.random();
+  @Input({ required: true }) product!: IProduct;
+
+  @Output() addToCart = new EventEmitter();
+
+  addToCartHandler() {
+    this.addToCart.emit(this.product);
+    console.log(
+      'Clicked in add to cart button nad added the' + this.product.title
+    );
+  }
 }
