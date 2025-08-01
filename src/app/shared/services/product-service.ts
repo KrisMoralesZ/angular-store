@@ -13,4 +13,10 @@ export class ProductService {
       'https://api.escuelajs.co/api/v1/products'
     );
   }
+
+  getProductsByCategory(slug: string) {
+    return this.http.get<IProduct[]>(
+      `https://api.escuelajs.co/api/v1/products/?categorySlug=${slug}`
+    );
+  }
 }
