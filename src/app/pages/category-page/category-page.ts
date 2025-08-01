@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
+import { RouterLinkWithHref } from '@angular/router';
 import { ICategory } from '@shared/models/category.model';
 import { CategoriesService } from '@shared/services/categories-service';
 
 @Component({
   selector: 'app-category-page',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLinkWithHref],
   templateUrl: './category-page.html',
   styleUrl: './category-page.css',
 })
