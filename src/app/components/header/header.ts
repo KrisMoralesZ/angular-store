@@ -22,7 +22,6 @@ export class Header {
     this.hideSideMenu.update((prevState) => !prevState);
   }
 
-  // TODO: Refactor to not duplicate logic
   categories = signal<ICategory[]>([]);
 
   private categoriesService = inject(CategoriesService);
