@@ -20,6 +20,18 @@
             >Categories</a
           >
         </li>
+
+        @for (category of categories(); track $index) {
+        <li>
+          <a
+            [routerLink]="['/categories', category.slug]"
+            class="block hover:underline"
+            aria-current="page"
+            >{{ category.name }}</a
+          >
+        </li>
+        }
+
         <li>
           <a routerLink="/about" class="block hover:underline">About</a>
         </li>
