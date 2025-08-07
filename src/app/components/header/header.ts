@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLinkWithHref } from '@angular/router';
 import { CartService } from '@shared/services/cart-service';
@@ -11,7 +11,7 @@ import { CategoriesService } from '@shared/services/categories-service';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
+export class Header implements OnInit {
   hideSideMenu = signal(true);
 
   private cartService = inject(CartService);
