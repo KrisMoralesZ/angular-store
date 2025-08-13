@@ -1,18 +1,18 @@
 <div class="group rounded-lg border">
   <img
-    [src]="product.images[0]"
-    [alt]="product.title"
+    [src]="product().images[0]"
+    [alt]="product().title"
     class="h-full w-full object-cover object-center group-hover:opacity-75"
   />
   <div class="flex flex-col space-y-2 p-4">
     <h3
       class="text-lg font-semibold text-gray-700 cursor-pointer hover:underline"
-      [routerLink]="['/products', product.id]"
+      [routerLink]="['/products', product().id]"
     >
-      {{ product.title }}
+      {{ product().title }}
     </h3>
     <p class="text-lg font-medium text-gray-900">
-      {{ product.price | currency: "$" }}
+      {{ product().price | currency: "$" }}
     </p>
     <button
       class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"

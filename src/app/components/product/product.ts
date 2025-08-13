@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { IProduct } from '@shared/models/product.model';
@@ -10,11 +10,11 @@ import { IProduct } from '@shared/models/product.model';
   styleUrl: './product.css',
 })
 export class Product {
-  @Input({ required: true }) product!: IProduct;
+  readonly product = input.required<IProduct>();
 
   @Output() addToCart = new EventEmitter();
 
   addToCartHandler() {
-    this.addToCart.emit(this.product);
+    this.addToCart.emit(this.product());
   }
 }
