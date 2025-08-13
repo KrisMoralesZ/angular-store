@@ -1,5 +1,8 @@
 <div class="group rounded-lg border">
-  <a routerLink="#" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+  <a
+    routerLink="/products/"
+    class="w-full overflow-hidden rounded-t-lg bg-gray-200"
+  >
     <img
       [src]="product.images[0]"
       [alt]="product.title"
@@ -7,7 +10,18 @@
     />
   </a>
   <div class="flex flex-col space-y-2 p-4">
-    <h3 class="text-sm text-gray-700">{{ product.title }}</h3>
+    <a
+      routerLink="/products/"
+      class="w-full overflow-hidden rounded-t-lg bg-gray-200"
+    >
+      <h3 class="text-sm text-gray-700">{{ product.title }}</h3>
+    </a>
+    <h3
+      class="text-lg font-semibold text-blue-600 cursor-pointer hover:underline"
+      [routerLink]="['/products', product.id]"
+    >
+      {{ product.title }}
+    </h3>
     <p class="text-lg font-medium text-gray-900">
       {{ product.price | currency: "$" }}
     </p>

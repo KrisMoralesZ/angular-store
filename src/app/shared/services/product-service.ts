@@ -13,6 +13,13 @@ export class ProductService {
     return this.http.get<IProduct[]>(`${environment.apiUrl}/api/v1/products`);
   }
 
+  getProduct(id: number) {
+    return this.http.get<IProduct[]>(
+      `https://api.escuelajs.co/api/v1/products/${id}`,
+      // `${environment.apiUrl}/api/v1/products/${id}`,
+    );
+  }
+
   getProductsByCategory(slug: string) {
     return this.http.get<IProduct[]>(
       `${environment.apiUrl}/api/v1/products/?categorySlug=${slug}`,
