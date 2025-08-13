@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IProduct } from '@shared/models/product.model';
-import { environment } from '@env/*';
+import { environment } from '@env/';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,7 @@ export class ProductService {
 
   getProduct(id: number) {
     return this.http.get<IProduct[]>(
-      `https://api.escuelajs.co/api/v1/products/${id}`,
-      // `${environment.apiUrl}/api/v1/products/${id}`,
+      `${environment.apiUrl}/api/v1/products/${id}`,
     );
   }
 
