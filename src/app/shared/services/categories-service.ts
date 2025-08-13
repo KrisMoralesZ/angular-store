@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ICategory } from '@shared/models/category.model';
+import { environment } from '@env/*';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class CategoriesService {
 
   getAllCategories() {
     return this.http.get<ICategory[]>(
-      'https://api.escuelajs.co/api/v1/categories',
+      `${environment.apiUrl}/api/v1/categories`,
     );
   }
 }
