@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { IProduct } from '@shared/models/product.model';
@@ -12,7 +12,7 @@ import { IProduct } from '@shared/models/product.model';
 export class Product {
   readonly product = input.required<IProduct>();
 
-  @Output() addToCart = new EventEmitter();
+  readonly addToCart = output<IProduct>();
 
   addToCartHandler() {
     this.addToCart.emit(this.product());
