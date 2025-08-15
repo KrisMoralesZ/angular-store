@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "serve:ssr:store": "node dist/store/server/server.mjs"
   },
   "prettier": {
     "overrides": [
@@ -27,8 +28,11 @@
     "@angular/core": "^20.0.0",
     "@angular/forms": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
+    "@angular/platform-server": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "@angular/ssr": "^20.1.6",
     "@tailwindcss/postcss": "^4.1.11",
+    "express": "^5.1.0",
     "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.11",
@@ -39,7 +43,9 @@
     "@angular/build": "^20.1.6",
     "@angular/cli": "^20.0.5",
     "@angular/compiler-cli": "^20.0.0",
+    "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.17.19",
     "angular-eslint": "20.1.1",
     "eslint": "^9.29.0",
     "jasmine-core": "~5.7.0",
