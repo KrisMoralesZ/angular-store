@@ -10,13 +10,13 @@ export class ProductService {
 
   getProducts() {
     return this.http.get<IProduct[]>(
-      'https://api.escuelajs.co/api/v1/products'
+      'https://api.escuelajs.co/api/v1/products',
     );
   }
 
   getProductsByCategory(slug: string) {
     return this.http.get<IProduct[]>(
-      `https://api.escuelajs.co/api/v1/products/?categorySlug=${slug}`
+      `https://api.escuelajs.co/api/v1/products/?categorySlug=${slug}`,
     );
   }
 }

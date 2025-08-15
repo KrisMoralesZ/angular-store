@@ -10,7 +10,7 @@ export class CategoriesService {
 
   getAllCategories() {
     return this.http.get<ICategory[]>(
-      'https://api.escuelajs.co/api/v1/categories'
+      'https://api.escuelajs.co/api/v1/categories',
     );
   }
 }
