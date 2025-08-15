@@ -21,15 +21,19 @@
           >
         </li>
 
-        @for (category of categories(); track $index) {
-          <li>
-            <a
-              [routerLink]="['/categories', category.slug]"
-              class="block hover:underline"
-              aria-current="page"
-              >{{ category.name }}</a
-            >
-          </li>
+        @let categoriesLinks = categories();
+
+        @if (categoriesLinks) {
+          @for (category of categoriesLinks; track $index) {
+            <li>
+              <a
+                [routerLink]="['/categories', category.slug]"
+                class="block hover:underline"
+                aria-current="page"
+                >{{ category.name }}</a
+              >
+            </li>
+          }
         }
 
         <li>
@@ -87,16 +91,19 @@
     </button>
   </div>
   <div class="pt-4 flex flex-col">
-    <div
-      class="flex justify-between items-center space-y-2"
-      *ngFor="let product of cart()"
-    >
-      <div class="flex space-x-2 items-center">
-        <img class="w-6 h-6" [src]="product.images[0]" [alt]="product.title" />
-        <h3>{{ product.title }}</h3>
+    @for (product of cart(); track $index) {
+      <div class="flex justify-between items-center space-y-2">
+        <div class="flex space-x-2 items-center">
+          <img
+            class="w-6 h-6"
+            [src]="product.images[0]"
+            [alt]="product.title"
+          />
+          <h3>{{ product.title }}</h3>
+        </div>
+        <p>{{ product.price }}</p>
       </div>
-      <p>{{ product.price }}</p>
-    </div>
+    }
     <div>
       <p>Total: {{ total() }}</p>
     </div>

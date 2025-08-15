@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IProduct } from '@shared/models/product.model';
-import { environment } from '@env/*';
+import { environment } from '@env/';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,12 @@ export class ProductService {
 
   getProducts() {
     return this.http.get<IProduct[]>(`${environment.apiUrl}/api/v1/products`);
+  }
+
+  getProduct(id: number) {
+    return this.http.get<IProduct[]>(
+      `${environment.apiUrl}/api/v1/products/${id}`,
+    );
   }
 
   getProductsByCategory(slug: string) {

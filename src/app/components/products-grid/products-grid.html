@@ -1,7 +1,12 @@
-<div class="grid grid-cols-4 gap-8 mt-5">
-  <app-product
-    *ngFor="let product of products()"
-    [product]="product"
-    (addToCart)="addToCart($event)"
-  ></app-product>
-</div>
+@let data = products();
+
+@if (data) {
+  <div class="grid grid-cols-4 gap-8 mt-5">
+    @for (product of data; track $index) {
+      <app-product
+        [product]="product"
+        (addToCart)="addToCart($event)"
+      ></app-product>
+    }
+  </div>
+}
