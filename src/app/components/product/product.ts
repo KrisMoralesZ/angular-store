@@ -7,7 +7,6 @@ import { IProduct } from '@shared/models/product.model';
   selector: 'app-product',
   imports: [CurrencyPipe, RouterLinkWithHref],
   templateUrl: './product.html',
-  styleUrl: './product.css',
 })
 export class Product {
   readonly product = input.required<IProduct>();

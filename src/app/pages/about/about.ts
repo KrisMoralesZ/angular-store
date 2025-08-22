@@ -6,6 +6,5 @@ import { RouterLinkWithHref } from '@angular/router';
   selector: 'app-about',
   imports: [CommonModule, RouterLinkWithHref],
   templateUrl: './about.html',
-  styleUrl: './about.css',
 })
 export class About {}

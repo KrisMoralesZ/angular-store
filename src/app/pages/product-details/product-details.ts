@@ -9,7 +9,6 @@ import { ProductService } from '@shared/services/product-service';
   selector: 'app-product-details',
   imports: [CommonModule, NgOptimizedImage],
   templateUrl: './product-details.html',
-  styleUrl: './product-details.css',
 })
 export class ProductDetails implements OnInit {
   product = signal<IProduct | null>(null);

@@ -9,7 +9,6 @@ import { CategoriesService } from '@shared/services/categories-service';
   selector: 'app-header',
   imports: [CommonModule, RouterLinkWithHref],
   templateUrl: './header.html',
-  styleUrl: './header.css',
 })
 export class Header implements OnInit {
   hideSideMenu = signal(true);
