@@ -12,10 +12,8 @@ export const routes: Routes = [
     component: Home,
   },
   {
-    path: 'products/:id',
-    loadComponent: () => ProductDetails,
-    // component: ProductDetails,
-    data: { renderMode: 'server' },
+    path: 'products/:slug',
+    component: ProductDetails,
   },
   {
     path: 'categories',
@@ -24,7 +22,6 @@ export const routes: Routes = [
   {
     path: 'categories/:slug',
     component: CategoryProductsPage,
-    data: { renderMode: 'server' },
   },
   {
     path: 'about',

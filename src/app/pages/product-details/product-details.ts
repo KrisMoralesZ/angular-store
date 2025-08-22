@@ -19,26 +19,19 @@ export class ProductDetails implements OnInit {
   private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    const idParam = this.route.snapshot.paramMap.get('id');
+    const slug = this.route.snapshot.paramMap.get('slug');
 
-    if (!idParam) {
-      console.error('Not valid ID');
+    if (!slug) {
+      console.error(`Product not found with slug: ${slug}`);
       return;
     }
 
-    const id = Number(idParam);
-
-    if (isNaN(id)) {
-      console.error('ID is not a number');
-      return;
-    }
-
-    this.productService.getProduct(id).subscribe({
+    this.productService.getProduct(slug).subscribe({
       next: (response) => {
         const product = Array.isArray(response) ? response[0] : response;
 
         if (!product) {
-          console.error(`Product not found with id: ${id}`);
+          console.error(`Product not found with id: ${slug}`);
           return;
         }
 
