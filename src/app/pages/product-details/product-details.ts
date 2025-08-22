@@ -1,8 +1,10 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '@env/';
 import { IProduct } from '@shared/models/product.model';
 import { CartService } from '@shared/services/cart-service';
+import { MetaTagsService } from '@shared/services/meta-tags-service';
 import { ProductService } from '@shared/services/product-service';
 
 @Component({
@@ -16,6 +18,7 @@ export class ProductDetails implements OnInit {
 
   private productService = inject(ProductService);
   private cartService = inject(CartService);
+  private metaTagsService = inject(MetaTagsService);
   private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
@@ -40,6 +43,13 @@ export class ProductDetails implements OnInit {
         if (product.images && product.images.length > 0) {
           this.cover.set(product.images[0]);
         }
+
+        this.metaTagsService.updateMetaTags({
+          title: product.title,
+          description: product.description,
+          image: product.images?.[0] || '',
+          url: `${environment.domain}/products/${slug}`,
+        });
       },
       error: (err) => {
         console.error('Error with product:', err);
