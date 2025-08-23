@@ -1,6 +1,7 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RelatedProducts } from '@components/related-products/related-products';
 import { environment } from '@env/';
 import { IProduct } from '@shared/models/product.model';
 import { CartService } from '@shared/services/cart-service';
@@ -9,7 +10,7 @@ import { ProductService } from '@shared/services/product-service';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule, NgOptimizedImage, RelatedProducts],
   templateUrl: './product-details.html',
 })
 export class ProductDetails implements OnInit {
