@@ -3,10 +3,14 @@
 @if (data) {
   <div class="grid grid-cols-4 gap-8 mt-5">
     @for (product of data; track $index) {
-      <app-product
-        [product]="product"
-        (addToCart)="addToCart($event)"
-      ></app-product>
+      @defer (on viewport) {
+        <app-product
+          [product]="product"
+          (addToCart)="addToCart($event)"
+        ></app-product>
+      } @placeholder {
+        <p class="col-span-1">Loading...</p>
+      }
     }
   </div>
 }
