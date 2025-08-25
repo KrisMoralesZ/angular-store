@@ -10,7 +10,6 @@ import { ProductService } from '@shared/services/product-service';
   selector: 'app-products-grid',
   imports: [CommonModule, Product],
   templateUrl: './products-grid.html',
-  styleUrl: './products-grid.css',
 })
 export class ProductsGrid implements OnInit {
   products = signal<IProduct[]>([]);

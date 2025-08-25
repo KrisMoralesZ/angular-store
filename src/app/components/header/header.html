@@ -24,7 +24,7 @@
         @let categoriesLinks = categories();
 
         @if (categoriesLinks) {
-          @for (category of categoriesLinks; track $index) {
+          @for (category of categoriesLinks.slice(0, 6); track category.id) {
             <li>
               <a
                 [routerLink]="['/categories', category.slug]"

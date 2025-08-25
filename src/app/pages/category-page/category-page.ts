@@ -8,7 +8,6 @@ import { CategoriesService } from '@shared/services/categories-service';
   selector: 'app-category-page',
   imports: [CommonModule, RouterLinkWithHref],
   templateUrl: './category-page.html',
-  styleUrl: './category-page.css',
 })
 export class CategoryPage implements OnInit {
   categories = signal<ICategory[]>([]);

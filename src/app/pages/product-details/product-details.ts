@@ -1,15 +1,17 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RelatedProducts } from '@components/related-products/related-products';
+import { environment } from '@env/';
 import { IProduct } from '@shared/models/product.model';
 import { CartService } from '@shared/services/cart-service';
+import { MetaTagsService } from '@shared/services/meta-tags-service';
 import { ProductService } from '@shared/services/product-service';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule, NgOptimizedImage, RelatedProducts],
   templateUrl: './product-details.html',
-  styleUrl: './product-details.css',
 })
 export class ProductDetails implements OnInit {
   product = signal<IProduct | null>(null);
@@ -17,29 +19,23 @@ export class ProductDetails implements OnInit {
 
   private productService = inject(ProductService);
   private cartService = inject(CartService);
+  private metaTagsService = inject(MetaTagsService);
   private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    const idParam = this.route.snapshot.paramMap.get('id');
+    const slug = this.route.snapshot.paramMap.get('slug');
 
-    if (!idParam) {
-      console.error('Not valid ID');
+    if (!slug) {
+      console.error(`Product not found with slug: ${slug}`);
       return;
     }
 
-    const id = Number(idParam);
-
-    if (isNaN(id)) {
-      console.error('ID is not a number');
-      return;
-    }
-
-    this.productService.getProduct(id).subscribe({
+    this.productService.getProduct(slug).subscribe({
       next: (response) => {
         const product = Array.isArray(response) ? response[0] : response;
 
         if (!product) {
-          console.error(`Product not found with id: ${id}`);
+          console.error(`Product not found with id: ${slug}`);
           return;
         }
 
@@ -48,6 +44,13 @@ export class ProductDetails implements OnInit {
         if (product.images && product.images.length > 0) {
           this.cover.set(product.images[0]);
         }
+
+        this.metaTagsService.updateMetaTags({
+          title: product.title,
+          description: product.description,
+          image: product.images?.[0] || '',
+          url: `${environment.domain}/products/${slug}`,
+        });
       },
       error: (err) => {
         console.error('Error with product:', err);

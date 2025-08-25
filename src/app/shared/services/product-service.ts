@@ -13,10 +13,15 @@ export class ProductService {
     return this.http.get<IProduct[]>(`${environment.apiUrl}/api/v1/products`);
   }
 
-  getProduct(id: number) {
+  getProduct(slug: string) {
     return this.http.get<IProduct[]>(
-      `${environment.apiUrl}/api/v1/products/${id}`,
+      `${environment.apiUrl}/api/v1/products/slug/${slug}`,
     );
+  }
+
+  getRelatedProducts(slug: string) {
+    const url = `${environment.apiUrl}/api/v1/products/slug/${slug}/related`;
+    return this.http.get<IProduct[]>(url);
   }
 
   getProductsByCategory(slug: string) {

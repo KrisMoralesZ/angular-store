@@ -6,6 +6,5 @@ import { ProductsGrid } from '@components/products-grid/products-grid';
   selector: 'app-home',
   imports: [CommonModule, ProductsGrid],
   templateUrl: './home.html',
-  styleUrls: ['./home.css'],
 })
 export class Home {}
