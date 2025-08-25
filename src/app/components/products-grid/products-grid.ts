@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '@components/product/product';
 import { IProduct } from '@shared/models/product.model';
@@ -10,9 +10,8 @@ import { ProductService } from '@shared/services/product-service';
   selector: 'app-products-grid',
   imports: [CommonModule, Product],
   templateUrl: './products-grid.html',
-  styleUrl: './products-grid.css',
 })
-export class ProductsGrid {
+export class ProductsGrid implements OnInit {
   products = signal<IProduct[]>([]);
 
   private cartService = inject(CartService);

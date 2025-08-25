@@ -1,0 +1,38 @@
+<!-- <h2 class="text-2xl font-bold mt-5">Related products</h2>
+<div class="grid grid-cols-2 gap-8 w-full md:grid-cols-8">
+  @for (product of relatedProducts(); track product.id) {
+    <app-product [product]="product" />
+  }
+</div> -->
+
+<div class="relative w-full overflow-hidden">
+  <button
+    class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10"
+    (click)="prev()"
+    [disabled]="currentIndex() === 0"
+  >
+    ‹
+  </button>
+
+  <div
+    class="flex transition-transform duration-300"
+    [style.transform]="'translateX(-' + currentIndex() * (100 / 6) + '%)'"
+  >
+    <!-- <ng-container *ngFor="let product of relatedProducts()">
+      <div class="w-1/6 flex-shrink-0 p-2">
+        <app-product [product]="product"></app-product>
+      </div>
+    </ng-container> -->
+    @for (product of relatedProducts(); track product.id) {
+      <app-product [product]="product" />
+    }
+  </div>
+
+  <button
+    class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10"
+    (click)="next()"
+    [disabled]="currentIndex() >= maxIndex()"
+  >
+    ›
+  </button>
+</div>

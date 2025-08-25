@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "esModuleInterop": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -18,6 +19,7 @@
       "@pages/*": ["./src/app/pages/*"],
       "@components/*": ["./src/app/components/*"],
       "@shared/*": ["./src/app/shared/*"],
+      "@env/*": ["./src/environments/environment.ts"]
     }
   },
   "angularCompilerOptions": {
